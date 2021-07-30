@@ -8,7 +8,7 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 public interface NewsMapper {
 
-    @Mapping(target = "dataCaptura", source = "dataCaptura", dateFormat = "dd-MM-yyyy")
+    @Mapping(target = "data_captura", source = "data_captura", dateFormat = "dd-MM-yyyy")
     News toModel(NewsDTO dto);
 
     NewsDTO toDTO(News dto);

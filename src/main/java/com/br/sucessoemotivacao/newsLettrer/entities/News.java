@@ -12,6 +12,7 @@ import javax.persistence.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class News {
 
     @Id
@@ -24,7 +25,30 @@ public class News {
     @Column(nullable = false)
     private String conteudo;
 
-    private String dataCaptura;
+    private String data_captura;
 
+    @Column(nullable = false)
+    private Long id_estado;
+
+    @Column(nullable = false)
+    private Long id_faixa_etaria;
+
+    @Column(nullable = false)
+    private Long id_genero;
+
+    @Column(nullable = false)
+    private Long id_etinia;
+
+    @Column(nullable = false)
+    private Long id_tipo_de_caso;
+
+    @Column(nullable = false)
+    private Long id_capital;
+
+    @Column(nullable = false)
+    private Long id_imagem;
+
+    @Column(nullable = false)
+    private Long qtd_pessoas;
 
 }
