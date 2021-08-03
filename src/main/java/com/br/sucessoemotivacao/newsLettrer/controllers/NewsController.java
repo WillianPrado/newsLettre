@@ -1,7 +1,10 @@
 package com.br.sucessoemotivacao.newsLettrer.controllers;
 
 import com.br.sucessoemotivacao.newsLettrer.dto.request.NewsDTO;
+import com.br.sucessoemotivacao.newsLettrer.dto.request.PersonDTO;
 import com.br.sucessoemotivacao.newsLettrer.dto.response.MessageResponseDTO;
+import com.br.sucessoemotivacao.newsLettrer.exception.NewsNotFoundException;
+import com.br.sucessoemotivacao.newsLettrer.exception.PersonNotFoundException;
 import com.br.sucessoemotivacao.newsLettrer.services.NewService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,5 +29,11 @@ public class NewsController {
     @GetMapping
     public List<NewsDTO> listAll() {
         return newService.listAll();
+    }
+
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public NewsDTO findById(@PathVariable Long id) throws NewsNotFoundException {
+        return newService.findById(id);
     }
 }

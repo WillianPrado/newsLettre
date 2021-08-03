@@ -2,8 +2,12 @@ package com.br.sucessoemotivacao.newsLettrer.services;
 
 import com.br.sucessoemotivacao.newsLettrer.dto.mapper.NewsMapper;
 import com.br.sucessoemotivacao.newsLettrer.dto.request.NewsDTO;
+import com.br.sucessoemotivacao.newsLettrer.dto.request.PersonDTO;
 import com.br.sucessoemotivacao.newsLettrer.dto.response.MessageResponseDTO;
 import com.br.sucessoemotivacao.newsLettrer.entities.News;
+import com.br.sucessoemotivacao.newsLettrer.entities.Person;
+import com.br.sucessoemotivacao.newsLettrer.exception.NewsNotFoundException;
+import com.br.sucessoemotivacao.newsLettrer.exception.PersonNotFoundException;
 import com.br.sucessoemotivacao.newsLettrer.repositories.NewsRepository;
 import lombok.AllArgsConstructor;
 
@@ -35,6 +39,13 @@ public class NewService {
         return news.stream()
                 .map(newsMapper::toDTO)
                 .collect(Collectors.toList());
+    }
+
+    public NewsDTO findById(Long id) throws NewsNotFoundException {
+        News news = newsRepository.findById(id)
+                .orElseThrow(() -> new NewsNotFoundException(id));
+
+        return newsMapper.toDTO(news);
     }
 
     private MessageResponseDTO createMessageResponse(String s, Long id2) {

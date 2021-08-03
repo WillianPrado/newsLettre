@@ -28,27 +28,29 @@ public class News {
     private String data_captura;
 
     @Column(nullable = false)
-    private Long id_estado;
-
-    @Column(nullable = false)
-    private Long id_faixa_etaria;
-
-    @Column(nullable = false)
-    private Long id_genero;
-
-    @Column(nullable = false)
-    private Long id_etinia;
-
-    @Column(nullable = false)
-    private Long id_tipo_de_caso;
-
-    @Column(nullable = false)
-    private Long id_capital;
-
-    @Column(nullable = false)
-    private Long id_imagem;
-
-    @Column(nullable = false)
     private Long qtd_pessoas;
+
+    @ManyToOne
+    private Estados estados;
+
+    @ManyToOne
+    private FaixaEtarias faixaEtarias;
+
+    @ManyToOne
+    private Generos generos;
+
+    @ManyToOne
+    private Etinias etinias;
+
+    @ManyToOne
+    private TipoDeCasos tipoDeCasos;
+
+    @ManyToOne
+    private Capitais capitais;
+
+    @ManyToOne
+    private Imagens imagens;
+
+
 
 }

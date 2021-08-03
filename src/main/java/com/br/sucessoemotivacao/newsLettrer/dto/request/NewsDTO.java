@@ -1,11 +1,13 @@
 package com.br.sucessoemotivacao.newsLettrer.dto.request;
 
+import com.br.sucessoemotivacao.newsLettrer.entities.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
@@ -26,19 +28,28 @@ public class NewsDTO {
 
     private String data_captura;
 
-    private Long id_estado;
-
-    private Long id_faixa_etaria;
-
-    private Long id_genero;
-
-    private Long id_etinia;
-
-    private Long id_tipo_de_caso;
-
-    private Long id_capital;
-
-    private Long id_imagem;
-
     private Long qtd_pessoas;
+
+    @ManyToOne
+    private FaixaEtarias faixaEtarias;
+
+    @ManyToOne
+    private Estados estados;
+
+    @ManyToOne
+    private Generos generos;
+
+    @ManyToOne
+    private Etinias etinias;
+
+    @ManyToOne
+    private TipoDeCasos tipoDeCasos;
+
+    @ManyToOne
+    private Capitais capitais;
+
+    @ManyToOne
+    private Imagens imagens;
+
+
 }
