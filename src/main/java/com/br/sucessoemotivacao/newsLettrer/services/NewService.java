@@ -48,6 +48,13 @@ public class NewService {
         return newsMapper.toDTO(news);
     }
 
+    public void delete(Long id) throws NewsNotFoundException {
+        newsRepository.findById(id)
+                .orElseThrow(() -> new NewsNotFoundException(id));
+
+        newsRepository.deleteById(id);
+    }
+
     private MessageResponseDTO createMessageResponse(String s, Long id2) {
         return MessageResponseDTO.builder()
                 .message(s + id2)

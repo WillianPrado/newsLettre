@@ -22,6 +22,7 @@ public class NewsController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
+    
     public MessageResponseDTO create(@RequestBody @Valid NewsDTO newsDTO) {
         return newService.create(newsDTO);
     }
@@ -35,5 +36,11 @@ public class NewsController {
     @ResponseStatus(HttpStatus.OK)
     public NewsDTO findById(@PathVariable Long id) throws NewsNotFoundException {
         return newService.findById(id);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable Long id) throws NewsNotFoundException {
+        newService.delete(id);
     }
 }

@@ -52,5 +52,4 @@ public class News {
     private Imagens imagens;
 
 
-
 }
