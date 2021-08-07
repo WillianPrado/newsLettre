@@ -37,7 +37,7 @@ public class NewsController {
     public NewsDTO findById(@PathVariable Long id) throws NewsNotFoundException {
         return newService.findById(id);
     }
-
+//teste
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id) throws NewsNotFoundException {
