@@ -47,7 +47,12 @@ public class NewService {
 
         return newsMapper.toDTO(news);
     }
-
+    public List<NewsDTO> findByTituloContaining(String titulo) {
+        List<News> news = newsRepository.findByTituloContaining(titulo);
+        return news.stream()
+                .map(newsMapper::toDTO)
+                .collect(Collectors.toList());
+    }
     public void delete(Long id) throws NewsNotFoundException {
         newsRepository.findById(id)
                 .orElseThrow(() -> new NewsNotFoundException(id));
